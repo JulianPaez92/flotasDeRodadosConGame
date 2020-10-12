@@ -1,7 +1,31 @@
 import wollok.game.*
+import otrosRodados.*
 
 program corsasEnElGame {
-	// hacer las inicializaciones necesarias 
+	game.title("Corsas de colores")
+
+	var corsaRojo = new Corsa(color=rojo,position=game.at(0,1),image="autitorojo.png")
+	var corsaVerde = new Corsa(color=verde,position=game.at(0,2),image="autitoverde.png")
+	var corsaAzul = new Corsa(color=azul,position=game.at(0,3),image="autitoazul.png")
+	var corsaActual
+	game.height(15)
+	game.width(15)
 	
+	game.addVisual(corsaRojo)
+	game.addVisual(corsaVerde)
+	game.addVisual(corsaAzul)
+	
+	keyboard.num1().onPressDo{corsaActual=corsaRojo}
+	keyboard.num2().onPressDo{corsaActual=corsaVerde}
+	keyboard.num3().onPressDo{corsaActual=corsaAzul}
+	
+	keyboard.left().onPressDo{corsaActual.moverIzquierda()}
+	keyboard.right().onPressDo{corsaActual.moverDerecha()}
+	keyboard.up().onPressDo{corsaActual.moverArriba()}
+	keyboard.down().onPressDo{corsaActual.moverAbajo()}
+	
+	keyboard.r().onPressDo{corsaActual.color(rojo) corsaActual.image("autitorojo.png")}
+	keyboard.v().onPressDo{corsaActual.color(verde) corsaActual.image("autitoverde.png")}
+	keyboard.a().onPressDo{corsaActual.color(azul) corsaActual.image("autitoazul.png")}
 	game.start()
 }
